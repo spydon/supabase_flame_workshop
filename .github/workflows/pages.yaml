@@ -27,13 +27,17 @@ jobs:
           channel: stable
           flutter-version: 3.47.0
       - run: dart pub get
-      - run: flutter build web --base-href /supabase_flame_workshop/
-        working-directory: packages/slides
+      - run: |
+          flutter build web \
+            --base-href /supabase_flame_workshop/ \
+            --dart-define=SUPABASE_URL=${{ vars.SUPABASE_URL }} \
+            --dart-define=SUPABASE_KEY=${{ vars.SUPABASE_KEY }}
+        working-directory: packages/game
       - run: cp build/web/index.html build/web/404.html
-        working-directory: packages/slides
+        working-directory: packages/game
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: packages/slides/build/web
+          path: packages/game/build/web
       - id: deployment
         uses: actions/deploy-pages@v4
