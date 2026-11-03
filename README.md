@@ -160,3 +160,7 @@ settings, then serve `build/web` from any static host.
   players in a match advertise the seed so late joiners can spectate.
 - The winner records the round through the typed `scores` table, and the lobby
   leaderboard is a typed Postgres Changes stream.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
